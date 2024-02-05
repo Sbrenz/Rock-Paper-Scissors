@@ -1,2 +1,2 @@
 # JavaScript-Project-p1
-A JavaScript project made by my team in the Kreativestorm's hands on course.
+A JavaScript project made by my team in the Kreativstorm's hands on course.
