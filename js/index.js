@@ -24,22 +24,28 @@ const scissors = `
       (____)
 ---.__(___)
 `;
-const images = [rock, paper, scissors];
-let playerImage = "";
-let computerImage = "";
+
 const choices = ["rock", "paper", "scissors"];
 let userResult = 0;
 let computerResult = 0;
-let playOrNot = false;
+let playerImage = "";
+let computerImage = "";
+/**
+ * @returns {string} corresponding to the player's selection
+ */
+const playerPlay = () => {};
 
-// Random choice for computer
-function computerPlay() {
-  const randomIndex = Math.floor(Math.random() * 3);
-  return choices[randomIndex];
-}
+/**
+ * @returns {string} corresponsing to the computer's choice
+ */
+const computerPlay = () => {};
 
-// Comparing user choice and computer choice
-function playRound(playerSelection, computerSelection) {
+/**
+ * @param {string} playerSelection
+ * @param {string} computerSelection
+ * @returns {string} the winner of the round
+ */
+const playRound = (playerSelection, computerSelection) => {
   switch (playerSelection) {
     case "rock":
       playerImage = rock;
@@ -82,60 +88,104 @@ function playRound(playerSelection, computerSelection) {
     computerResult++;
     return `Computer wins! ${computerSelection} beats ${playerSelection}`;
   }
+};
+
+//Lucy's contribution to the project DO NOT DELETE
+function finalWinner(human, pc) {
+  if (human > pc) return "Final victory is yours! Congrats";
+
+  if (human === pc) return "It's a tie between a human and a machine";
+
+  return "I won the whole game!!!";
 }
 
-// Play the game
-function game() {
-  console.log(
-    "%cWelcome to Rock, Paper, Scissors game! Can you beat computer ?",
-    "color: white; background: green; font-size: 36px; border: 5px double cyan; text-shadow: 3px 3px black; padding: 110px; border-radius: 16px; font-weight: bold; font-family:Lucida Console;"
+/**
+ *
+ * @param {string} choice
+ * @returns string corresponding to the ASCII Art of the choice
+ */
+const displayTheRightImage = (choice) => {
+  switch (choice) {
+    case "scissors":
+      return scissors;
+    case "paper":
+      return paper;
+    case "rock":
+      return rock;
+  }
+};
+
+/**
+ *
+ * @param {string} winner: the winner of the round
+ * @param {string} playerInput: the input from the player
+ * @param {string} computerInput: the input form the computer
+ * @returns {string} the message to explain who lost/won and why.
+ */
+const displayRoundResult = (winner, playerInput, computerInput) => {
+  if (winner === "user") {
+    return `${
+      playerInput.charAt(0).toUpperCase() + playerInput.slice(1)
+    } beats ${computerInput.toLowerCase()}! You win! `;
+  } else if (winner === "computer") {
+    return `${
+      computerInput.charAt(0).toUpperCase() + computerInput.slice(1)
+    } beats ${playerInput.toLowerCase()}! You lose! `;
+  } else {
+    return "Even!";
+  }
+};
+
+/**
+ * Play the game for 5 rounds.
+ * At the final round, it will declare the final winner using the
+ * function "checkWhoIsTheWinnerOftheGame()"
+ */
+const game = () => {
+  alert(
+    "AI vs The world \n \n A super mega evil AI has taken control of the world. It's almost the end of the humanity, and the beginning of the machines' era. \n You are our only hope. You have to beat the devilish AI at rock-paper-scissors to save the humanity (and the other species. Why is always about human? I can't bel.... ). \n Sorry about that, we change the narrator. Now, it's time to get your hands dirty"
+  );
+  alert(
+    "The rule are simple: \n - the rock beats the scissors, \n - the scissors beats the paper, \n - the paper beats the rock. \n The player with the highest score after 5 rounds is the winner. (PS:Don't forget to open your console to follow the game)"
   );
 
-  if (!playOrNot) playOrNot = confirm("Do you want to play the game ?");
+  let playerScore = 0;
+  let computerScore = 0;
 
-  if (playOrNot) {
-    let i = 0;
-    while (i < 5) {
-      let playerSelection = prompt(
-        "Please choose: rock, paper, or scissors"
-      ).toLowerCase();
-      if (!["rock", "paper", "scissors"].includes(playerSelection)) {
-        console.log("Invalid choice. Please choose rock, paper, or scissors.");
-        continue;
-      }
-      const computerChoice = computerPlay();
+  for (let i = 0; i < 5; i++) {
+    console.log(`Round ${i + 1}`);
+    const playerInput = playerPlay();
+    if (playerInput === undefined) break;
+    const computerInput = computerPlay();
+    const winner = playRound(playerInput, computerInput);
 
-      const result = playRound(playerSelection, computerChoice);
-      console.log(result);
-      i++;
+    switch (winner) {
+      case "computer":
+        computerScore++;
+        break;
+      case "user":
+        playerScore++;
+        break;
+      default:
+        playerScore++;
+        computerScore++;
+        break;
     }
 
-    if (userResult > computerResult) {
-      console.log(
-        `You win with overall score of ${userResult} while computer have only ${computerResult} scores`
-      );
-    } else if (userResult === computerResult) {
-      console.log(
-        `It's a tie! Both you and computer have scores of ${userResult} `
-      );
-    } else {
-      console.log(
-        `Computer wins with overall score of ${computerResult} while you have only ${userResult} scores`
-      );
-    }
+    console.log(
+      `You chose ${playerInput}: \n
+      ${displayTheRightImage(playerInput)}`
+    );
+    console.log(
+      `The computer chose ${computerInput}: \n
+      ${displayTheRightImage(computerInput)}`
+    );
+    console.log(displayRoundResult(winner, playerInput, computerInput));
 
-    playOrNot = confirm("Thank you for playing! Do you want to play again?");
-    if (playOrNot) {
-      userResult = 0;
-      computerResult = 0;
-      console.clear();
-      game();
-    } else {
-      console.log(
-        "%cThank you for playing!",
-        "color: white; background: red; font-size: 36px; border: 5px double cyan; text-shadow: 3px 3px black; padding: 110px; border-radius: 16px; font-weight: bold; font-family:Lucida Console;"
-      );
-    }
+    console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
   }
-}
+
+  console.log(finalWinner(playerScore, computerScore));
+};
+
 game();
