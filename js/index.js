@@ -26,7 +26,10 @@ const scissors = `
 `;
 
 const choices = ["rock", "paper", "scissors"];
-
+let userResult = 0;
+let computerResult = 0;
+let playerImage = "";
+let computerImage = "";
 /**
  * @returns {string} corresponding to the player's selection
  */
@@ -42,7 +45,50 @@ const computerPlay = () => {};
  * @param {string} computerSelection
  * @returns {string} the winner of the round
  */
-const playRound = (playerSelection, computerSelection) => {};
+const playRound = (playerSelection, computerSelection) => {
+  switch (playerSelection) {
+    case "rock":
+      playerImage = rock;
+      break;
+    case "paper":
+      playerImage = paper;
+      break;
+    case "scissors":
+      playerImage = scissors;
+      break;
+  }
+
+  switch (computerSelection) {
+    case "rock":
+      computerImage = rock;
+      break;
+    case "paper":
+      computerImage = paper;
+      break;
+    case "scissors":
+      computerImage = scissors;
+      break;
+  }
+
+  console.log(`You chose: ${playerSelection}\n${playerImage}`);
+  console.log(`Computer chose: ${computerSelection}\n${computerImage}`);
+
+  if (playerSelection === computerSelection) {
+    userResult++;
+    computerResult++;
+    return "It's a tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    userResult++;
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else {
+    computerResult++;
+    return `Computer wins! ${computerSelection} beats ${playerSelection}`;
+  }
+};
 
 //Lucy's contribution to the project DO NOT DELETE
 function finalWinner(human, pc) {
