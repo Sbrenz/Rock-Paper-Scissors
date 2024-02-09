@@ -2,7 +2,7 @@
 <h2>Hi 👋, welcome to our repository!</h2>
 <div >
   <section>
-    <p>🔭 Visit the https://javascriptprojectp1.netlify.app/ to see our work! </p>
+    <p>🔭 Visit the https://sbrenz.github.io/JavaScript-Project-p1/ to see our work! </p>
   </section>
   <section>
     <p>This project was done with vanilla JavaScript</p>
