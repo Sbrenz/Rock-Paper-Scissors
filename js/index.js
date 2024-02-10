@@ -32,21 +32,19 @@ const choices = ["rock", "paper", "scissors"];
  * @returns {string} the computer input
  */
 const computerPlay = () => {
-  // extract randomly an index of the array
   const randomIndex = Math.floor(Math.random() * choices.length);
-  // return of the computer choice
   return choices[randomIndex];
 };
 
 const toContinue = () => {
-  const isContinue = prompt("Do you want to continue? Y/N").toLowerCase();
+  const isContinue = confirm(
+    "Why do you want to leave? Are you afraid to loooooose? \n Do you want to continue?"
+  );
 
   switch (isContinue) {
-    case "y":
-    case "yes":
+    case true:
       return playerPlay();
-    case "n":
-    case "no":
+    case false:
       alert(
         "You failed us! This is the end of the world! Kaboom Brre PAAA Boooooom Prrrppwrrrrr (What do you think about my onomatope? Good, right?) Paaa prrrrrr"
       );
@@ -62,16 +60,14 @@ const toContinue = () => {
  */
 const playerPlay = () => {
   let isValidChoice = false;
-  // while loop to handle the wrong input of the user
   while (!isValidChoice) {
     const input = prompt("Let's play Rock, Paper, or Scissors");
 
     if (input === null) {
-      alert("Why do you want to leave? Are you afraid to loooooose?");
       return toContinue();
     }
 
-    lowerInput = input.toLowerCase();
+    lowerInput = input.trim().toLowerCase();
     if (
       lowerInput === "scissors" ||
       lowerInput === "paper" ||
@@ -84,7 +80,6 @@ const playerPlay = () => {
       );
     }
   }
-  // return of the user input
   return lowerInput;
 };
 
