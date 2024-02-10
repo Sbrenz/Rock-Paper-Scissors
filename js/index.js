@@ -202,3 +202,5 @@ const game = () => {
 };
 
 setTimeout(() => game(), 5000);
+
+console.log("Game will start! Be patient...");
