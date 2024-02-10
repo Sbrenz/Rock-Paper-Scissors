@@ -58,7 +58,10 @@ const playerPlay = () => {
   let isValidChoice = false;
 
   while (!isValidChoice) {
-    const input = prompt("Let's play Rock, Paper, or Scissors");
+    const input = setTimeout(
+      prompt("Let's play Rock, Paper, or Scissors"),
+      2000
+    );
 
     if (input === null) {
       return toContinue();
