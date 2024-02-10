@@ -41,17 +41,11 @@ const toContinue = () => {
     "Why do you want to leave? Are you afraid to loooooose? \n Do you want to continue?"
   );
 
-  switch (isContinue) {
-    case true:
-      return playerPlay();
-    case false:
-      alert(
+  isContinue
+    ? playerPlay()
+    : alert(
         "You failed us! This is the end of the world! Kaboom Brre PAAA Boooooom Prrrppwrrrrr (What do you think about my onomatope? Good, right?) Paaa prrrrrr"
       );
-      return;
-    default:
-      return toContinue();
-  }
 };
 
 /**
