@@ -198,6 +198,8 @@ const game = () => {
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
   }
 
+  console.log(round);
+
   round === 5
     ? console.log(finalWinner(playerScore, computerScore))
     : console.log("The player has given up! \n Game over!");
