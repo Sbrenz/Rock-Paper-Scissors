@@ -26,19 +26,43 @@ const scissors = `
 `;
 
 const choices = ["rock", "paper", "scissors"];
-let userResult = 0;
-let computerResult = 0;
-let playerImage = "";
-let computerImage = "";
-/**
- * @returns {string} corresponding to the player's selection
- */
-const playerPlay = () => {};
 
 /**
- * @returns {string} corresponsing to the computer's choice
+ *
+ * @returns {string} the computer input
  */
-const computerPlay = () => {};
+const computerPlay = () => {
+  // extract randomly an index of the array
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  // return of the computer choice
+  return choices[randomIndex];
+};
+
+/**
+ *
+ * @returns {string} player's input
+ */
+const playerPlay = () => {
+  let isValidChoice = false;
+  // while loop to handle the wrong input of the user
+  while (!isValidChoice) {
+    const input = prompt("Let's play Rock, Paper, or Scissors");
+    lowerInput = input.toLowerCase();
+    if (
+      lowerInput === "scissors" ||
+      lowerInput === "paper" ||
+      lowerInput === "rock"
+    ) {
+      isValidChoice = true;
+    } else {
+      alert(
+        "Insert a valid choice like rock, paper or scissors, make sure your choice is well written."
+      );
+    }
+  }
+  // return of the user input
+  return lowerInput;
+};
 
 /**
  * @param {string} playerSelection
@@ -46,58 +70,24 @@ const computerPlay = () => {};
  * @returns {string} the winner of the round
  */
 const playRound = (playerSelection, computerSelection) => {
-  switch (playerSelection) {
-    case "rock":
-      playerImage = rock;
-      break;
-    case "paper":
-      playerImage = paper;
-      break;
-    case "scissors":
-      playerImage = scissors;
-      break;
-  }
-
-  switch (computerSelection) {
-    case "rock":
-      computerImage = rock;
-      break;
-    case "paper":
-      computerImage = paper;
-      break;
-    case "scissors":
-      computerImage = scissors;
-      break;
-  }
+  const playerImage = displayTheRightImage(playerSelection);
+  const computerImage = displayTheRightImage(computerSelection);
 
   console.log(`You chose: ${playerSelection}\n${playerImage}`);
   console.log(`Computer chose: ${computerSelection}\n${computerImage}`);
 
   if (playerSelection === computerSelection) {
-    userResult++;
-    computerResult++;
-    return "It's a tie!";
+    return "tie";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    userResult++;
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    return "player";
   } else {
-    computerResult++;
-    return `Computer wins! ${computerSelection} beats ${playerSelection}`;
+    return "computer";
   }
 };
-
-//Lucy's contribution to the project DO NOT DELETE
-function finalWinner(human, pc) {
-  if (human > pc) return "Final victory is yours! Congrats";
-
-  if (human === pc) return "It's a tie between a human and a machine";
-
-  return "I won the whole game!!!";
-}
 
 /**
  *
@@ -132,9 +122,24 @@ const displayRoundResult = (winner, playerInput, computerInput) => {
       computerInput.charAt(0).toUpperCase() + computerInput.slice(1)
     } beats ${playerInput.toLowerCase()}! You lose! `;
   } else {
-    return "Even!";
+    return "It's a tie!";
   }
 };
+
+//Lucy's contribution to the project DO NOT DELETE
+/**
+ * Compare player's score and computer's score to see who is the winner.
+ * @param {number} player
+ * @param {number} computer
+ * @returns {string} The Message which says who is the final winner.
+ */
+function finalWinner(player, computer) {
+  if (player > computer) return "Final victory is yours! Congrats";
+
+  if (player === computer) return "It's a tie between a human and a machine";
+
+  return "I won the whole game!!!";
+}
 
 /**
  * Play the game for 5 rounds.
@@ -154,6 +159,7 @@ const game = () => {
 
   for (let i = 0; i < 5; i++) {
     console.log(`Round ${i + 1}`);
+
     const playerInput = playerPlay();
     if (playerInput === undefined) break;
     const computerInput = computerPlay();
@@ -172,16 +178,7 @@ const game = () => {
         break;
     }
 
-    console.log(
-      `You chose ${playerInput}: \n
-      ${displayTheRightImage(playerInput)}`
-    );
-    console.log(
-      `The computer chose ${computerInput}: \n
-      ${displayTheRightImage(computerInput)}`
-    );
     console.log(displayRoundResult(winner, playerInput, computerInput));
-
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
   }
 
