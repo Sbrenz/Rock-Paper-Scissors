@@ -156,11 +156,6 @@ function finalWinner(player, computer) {
   return "I won the whole game!!!";
 }
 
-/**
- * Play the game for 5 rounds.
- * At the final round, it will declare the final winner using the
- * function "checkWhoIsTheWinnerOftheGame()"
- */
 const game = () => {
   alert(
     "AI vs The world \n \n A super mega evil AI has taken control of the world. It's almost the end of the humanity, and the beginning of the machines' era. \n You are our only hope. You have to beat the devilish AI at rock-paper-scissors to save the humanity (and the other species. Why is always about human? I can't bel.... ). \n Sorry about that, we change the narrator. Now, it's time to get your hands dirty"
