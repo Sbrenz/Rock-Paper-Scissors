@@ -180,9 +180,11 @@ const game = () => {
 
   let playerScore = 0;
   let computerScore = 0;
+  let round = 0;
 
   for (let i = 0; i < 5; i++) {
-    console.log(`Round ${i + 1}`);
+    round = i + 1;
+    console.log(`Round ${round}`);
 
     const playerInput = playerPlay();
     if (playerInput === undefined) break;
@@ -206,7 +208,9 @@ const game = () => {
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
   }
 
-  console.log(finalWinner(playerScore, computerScore));
+  round === 5
+    ? console.log(finalWinner(playerScore, computerScore))
+    : console.log("The player has given up! \n Game over!");
 };
 
 game();
