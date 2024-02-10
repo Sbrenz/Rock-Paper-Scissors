@@ -56,6 +56,7 @@ const toContinue = () => {
  */
 const playerPlay = () => {
   let isValidChoice = false;
+  let lowerInput = "";
   while (!isValidChoice) {
     const input = prompt("Let's play Rock, Paper, or Scissors");
 
@@ -178,6 +179,7 @@ const game = () => {
 
     const playerInput = playerPlay();
     if (playerInput === undefined) break;
+    if (playerInput === "") alert("Please refresh the page to start the game.");
     const computerInput = computerPlay();
     const winner = playRound(playerInput, computerInput);
 
@@ -197,8 +199,6 @@ const game = () => {
     console.log(displayRoundResult(winner, playerInput, computerInput));
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
   }
-
-  console.log(round);
 
   round === 5
     ? console.log(finalWinner(playerScore, computerScore))
