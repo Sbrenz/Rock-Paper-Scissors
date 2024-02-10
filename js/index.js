@@ -197,7 +197,6 @@ const game = () => {
 
     console.log(displayRoundResult(winner, playerInput, computerInput));
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
-    counter++;
   }
 
   round === 5
@@ -208,5 +207,3 @@ const game = () => {
 };
 
 setTimeout(() => game(), 5000);
-
-console.log("Please reload the page to start a new game.");
