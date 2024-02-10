@@ -150,7 +150,7 @@ const displayRoundResult = (winner, playerInput, computerInput) => {
   }
 };
 
-//Lucy's contribution to the project DO NOT DELETE
+
 /**
  * Compare player's score and computer's score to see who is the winner.
  * @param {number} player
