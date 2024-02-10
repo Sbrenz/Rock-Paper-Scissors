@@ -207,6 +207,4 @@ const game = () => {
       );
 };
 
-window.opener.confirm = window.confirm;
-
 setTimeout(() => game(), 5000);
