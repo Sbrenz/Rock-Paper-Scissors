@@ -207,4 +207,6 @@ const game = () => {
       );
 };
 
+window.focus();
+
 setTimeout(game(), 2000);
