@@ -207,7 +207,4 @@ const game = () => {
       );
 };
 
-window.prompt("hello world");
-window.focus();
-
-setTimeout(game(), 5000);
+setTimeout(() => game(), 5000);
