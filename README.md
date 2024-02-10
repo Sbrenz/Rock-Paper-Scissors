@@ -1,3 +1,4 @@
+![Profile Banner](https://github.com/Sbrenz/JavaScript-Project-p1/blob/main/Blue%20Quote%20Technology%20School%20Newsletter%20Smore%20Header.png)
 <h1>Front-end Developer course by Kreativestorm</h1>
 <h2>Hi 👋, welcome to our repository!</h2>
 <div >
