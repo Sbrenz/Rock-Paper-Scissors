@@ -150,7 +150,6 @@ const displayRoundResult = (winner, playerInput, computerInput) => {
   }
 };
 
-
 /**
  * Compare player's score and computer's score to see who is the winner.
  * @param {number} player
@@ -203,8 +202,6 @@ const game = () => {
         computerScore++;
         break;
     }
-
-    console.log(winner);
 
     console.log(displayRoundResult(winner, playerInput, computerInput));
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
