@@ -197,6 +197,7 @@ const game = () => {
 
     console.log(displayRoundResult(winner, playerInput, computerInput));
     console.log(`Score: Player ${playerScore} - ${computerScore} AI`);
+    counter++;
   }
 
   round === 5
@@ -206,11 +207,4 @@ const game = () => {
       );
 };
 
-alert(
-  "AI vs The world \n \n A super mega evil AI has taken control of the world. It's almost the end of the humanity, and the beginning of the machines' era. \n You are our only hope. You have to beat the devilish AI at rock-paper-scissors to save the humanity (and the other species. Why is always about human? I can't bel.... ). \n Sorry about that, we change the narrator. Now, it's time to get your hands dirty"
-);
-alert(
-  "The rule are simple: \n - the rock beats the scissors, \n - the scissors beats the paper, \n - the paper beats the rock. \n The player with the highest score after 5 rounds is the winner. (PS:Don't forget to open your console to follow the game)"
-);
-
-game();
+setTimeout(game(), 2000);
