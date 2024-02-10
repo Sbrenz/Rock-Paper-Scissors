@@ -41,11 +41,13 @@ const toContinue = () => {
     "Why do you want to leave? Are you afraid to loooooose? \n Do you want to continue?"
   );
 
-  isContinue
-    ? playerPlay()
-    : alert(
-        "You failed us! This is the end of the world! Kaboom Brre PAAA Boooooom Prrrppwrrrrr (What do you think about my onomatope? Good, right?) Paaa prrrrrr"
-      );
+  if (isContinue) {
+    return playerPlay();
+  } else {
+    alert(
+      "You failed us! This is the end of the world! Kaboom Brre PAAA Boooooom Prrrppwrrrrr (What do you think about my onomatope? Good, right?) Paaa prrrrrr"
+    );
+  }
 };
 
 /**
