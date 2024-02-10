@@ -195,7 +195,7 @@ const game = () => {
       case "computer":
         computerScore++;
         break;
-      case "user":
+      case "player":
         playerScore++;
         break;
       default:
