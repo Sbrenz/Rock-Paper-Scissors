@@ -137,7 +137,7 @@ const displayTheRightImage = (choice) => {
  * @returns {string} the message to explain who lost/won and why.
  */
 const displayRoundResult = (winner, playerInput, computerInput) => {
-  if (winner === "user") {
+  if (winner === "player") {
     return `${
       playerInput.charAt(0).toUpperCase() + playerInput.slice(1)
     } beats ${computerInput.toLowerCase()}! You win! `;
