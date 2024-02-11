@@ -201,6 +201,11 @@ const game = () => {
       );
 };
 
-setTimeout(() => game(), 5000);
+setTimeout(() => {
+  const startGame = confirm("Do you want to start the game?");
+  startGame
+    ? game()
+    : alert("Too late! Please refresh the page to start the game.");
+}, 5000);
 
 console.log("Game will start! Be patient...");
